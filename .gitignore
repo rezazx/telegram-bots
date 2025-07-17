@@ -1,0 +1,41 @@
+# PHP specific
+*.log
+*.cache
+*.lock
+*.tmp
+
+# OS / Editor files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*.bak
+*.zip
+
+# Composer
+/vendor/
+
+# Node (in case you add frontend assets later)
+node_modules/
+dist/
+
+# Environment files
+.env
+
+# IDEs
+.idea/
+.vscode/
+
+# Logs
+logs/
+*.log
+
+# Slim Cache (if used)
+cache/
+tmp/
+
+# PHPUnit
+.phpunit.result.cache
+
+# Misc
+composer.phar

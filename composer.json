@@ -1,0 +1,29 @@
+{
+    "name": "reza.zx/telegram-bot",
+    "description": "Core and implementation of functional Telegram bots by Reza.",
+    "type": "project",
+    "require": {
+        "slim/slim": "^4.0",
+        "catfan/medoo": "^2.1",
+        "vlucas/phpdotenv": "^5.5",
+        "monolog/monolog": "^2.0",
+        "php-di/php-di": "^6.0",
+        "guzzlehttp/guzzle": "^7.0",
+        "firebase/php-jwt": "^6.10",
+        "slim/psr7": "^1.6"
+    },
+    "autoload": {
+      "psr-4": {
+        "App\\": "classes/",
+        "MRZX\\":"utils/",
+        "Bots\\": "bots/"
+      }
+    },
+    "config": {
+      "optimize-autoloader": true,
+      "sort-packages": true
+    },
+    "minimum-stability": "stable",
+    "license": "MIT"
+}
+  
