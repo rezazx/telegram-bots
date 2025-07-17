@@ -2,9 +2,9 @@
 
 A modular PHP framework for building Telegram bots using Slim 4 and modern design patterns like DI, registration, and handlers.
 
-Hey there! Just a heads up — this project isn’t finished yet.
-Some parts might change, and the documentation isn’t complete or 100% accurate.
-Thanks for your patience!
+> ⚠️ **Hey there! Just a heads up — this project isn’t finished yet.**  
+> Some parts might change, and the documentation isn’t complete or 100% accurate.  
+> Thanks for your patience!
 
 ## 📦 Features
 
