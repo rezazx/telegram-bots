@@ -23,4 +23,12 @@ class BotRegistry
         }
         return null;
     }
+
+    public static function setWebhookUrl($webhook_url,$bot_token): array
+    {
+        $api = "https://api.telegram.org/bot{$bot_token}/setWebhook";
+
+        $response = file_get_contents($api . '?url=' . urlencode($webhook_url));
+        return json_decode($response, true);
+    }
 }

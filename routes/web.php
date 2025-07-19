@@ -3,6 +3,8 @@
 use Slim\App;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
+use App\Core\BotRegistry;
+use MRZX\Tools;
 
 // Define a basic route
 $app->get('/', function (Request $request, Response $response, $args) {
@@ -40,4 +42,40 @@ $app->get('/install', function (Request $request, Response $response, $args) {
     // $response->getBody()->write("Install successful!");
 
     return $response;
+});
+
+$app->get('/setwebhook/{bot}', function (Request $request, Response $response, array $args) {
+    $botName = preg_replace('/[^a-zA-Z0-9_\-]/', '', $args['bot'] ?? '');
+    $queryParams = $request->getQueryParams();
+    $adminKey = $queryParams['key'] ?? '';
+
+
+    if ($adminKey !== $_ENV['ADMIN_KEY']) {
+        $response->getBody()->write('Access denied');
+        return $response->withStatus(403);
+    }
+
+    $bot = null;
+    foreach (BotRegistry::all() as $b) {
+    if ($b['name'] === $botName) {
+        $bot = $b;
+        break;
+        }
+    }
+
+    if (!$bot) {
+        $response->getBody()->write('Bot not found');
+        return $response->withStatus(403);
+    }
+
+    
+    if (!isset($bot['config']['token'])) {
+        $response->getBody()->write('wrong token!');
+        return $response->withStatus(404);
+    }
+    $webhookUrl = $_ENV['APP_URL'] .$_ENV['BASE_URL'] . '/bot' . $bot['webhook'];
+    $set = BotRegistry::setWebhookUrl($webhookUrl, $bot['config']['token']);
+
+    $response->getBody()->write(json_encode($set, JSON_PRETTY_PRINT));
+    return $response->withHeader('Content-Type', 'application/json');
 });
