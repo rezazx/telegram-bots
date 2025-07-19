@@ -122,30 +122,6 @@ Make sure your database is up and running.
 
 ---
 
-### 5. Set Webhook (Optional for production)
-
-If you're deploying the bot and want it to receive messages via webhook:
-
-```bash
-php setWebhook.php
-```
-
-Make sure your server has HTTPS and the URL is publicly accessible.
-
----
-
-### 6. Run the Bot (Polling)
-
-For local testing, you can run the bot in polling mode:
-
-```bash
-php bot.php
-```
-
-You can also run this script with a scheduler like `cron` or a worker if using polling.
-
----
-
 ### ✅ You're all set!
 
 Your bot should now be up and running.
