@@ -107,6 +107,7 @@ APP_NAME=zx_telegram                   # A custom name for your app instance
 APP_KEY="write your key"               # Application-level encryption key
 AUTH_KEY="write your key"              # Authentication key for protected routes
 CRON_SECRET_KEY="write your key"       # Secret key for accessing CRON routes
+ADMIN_KEY="write your key"             # Secret key for admin content.
 
 # bot setting
 BOT_EX_TOKEN="example_bot_secret_key"
@@ -192,6 +193,30 @@ Use a tool or API call to set your webhook URL. Example (replace TOKEN and URL):
 
 ```
 https://api.telegram.org/bot<YOUR_TOKEN>/setWebhook?url=https://example.com/telegram-bots/bot/invoice-bot
+```
+
+```md
+### Set Webhook via Route
+
+Instead of manually calling the Telegram API, you can use the built-in route method to register the webhook automatically. Use the following URL pattern:
+```
+
+[https://yourdomain.com/setwebhook/{bot}?key=ADMIN_KEY](https://yourdomain.com/setwebhook/{bot}?key=ADMIN_KEY)
+
+```
+
+Replace `{bot}` with the folder name of your bot (e.g., `invoice-bot`). Example:
+
+```
+
+[https://yourdomain.com/setwebhook/invoice-bot?key=ADMIN_KEY](https://yourdomain.com/setwebhook/invoice-bot?key=ADMIN_KEY)
+
+```
+
+> Make sure your bot has a valid `TOKEN` defined in its configuration.
+> Also, ensure that `ADMIN_KEY` is defined in your `.env` file to allow authorized access to protected routes.
+
+This route will automatically call Telegram's `setWebhook` API and register your domain as the webhook URL for the specified bot.
 ```
 
 ---
