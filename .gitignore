@@ -39,3 +39,9 @@ tmp/
 
 # Misc
 composer.phar
+
+# Ignore all files and folders inside the bot
+/bot/*
+
+# Making exceptions for specific folders (examples)
+!/bot/InvoiceBot/
